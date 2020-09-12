@@ -44,15 +44,20 @@ plt.show()
 # control commands
 # off/on, up/down, stop/go, yes/no, left, right
 # everything else is discarded
-
-# now we have to lex these words. imagine an input stream of characters,
-# we have to simulate EOF, as a stop-sign. And we have to somehow map
-# arithmetic expressions alphabet into the new alphabet.
 # EOF = 'stop'
 
 # Say first we have only expressions of this form:
 # G = A | A + A
 # A is [0-9]+
 
-# The first subtask is to recognize the operand. The second is to build
-# a small parser to do something smart with these operands.
+# The first subtask is to recognize the operand. Then build a small
+# parser to do something smart with these operands.
+
+import os
+
+'''
+problem: create a keyword spotting system
+we just need to get the list of words, and that's it.
+we will probably have multiple neural networks for recognizing each word
+if we have just one, then IDK how to do it...
+'''
