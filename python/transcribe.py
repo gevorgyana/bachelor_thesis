@@ -56,8 +56,15 @@ plt.show()
 import os
 
 '''
-problem: create a keyword spotting system
-we just need to get the list of words, and that's it.
-we will probably have multiple neural networks for recognizing each word
-if we have just one, then IDK how to do it...
+create 10 models, each of them wil be trying to predict words of type
+'zero', 'one', 'two', .., 'nine' - sequences of them!
+
+then run each model on the same input the following matrix
+x_0 = [(t011, t012), (t021, t022), ... ],
+x_1 = [(t111, t112), (t121, t122), ... ],
+...,
+x_9 = [(t911, t912), (t921, t922), ... ],
+
+then merge each of the cells and obtain a final vector y:
+y = ((t, class), (t, class), (t, class))
 '''
