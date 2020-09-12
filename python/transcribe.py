@@ -21,6 +21,8 @@ def mel_spectrogram(path: str):
         n_mfcc = 40
     )
 
+# display a sample plot
+'''
 spectrogram = mel_spectrogram(
     './data/bed/00176480_nohash_0.wav'
 )
@@ -29,3 +31,16 @@ librosa.display.specshow(
     spectrogram
 )
 plt.show()
+'''
+
+# define the grammar for the simple language, this language will recognize
+# arithmetic expressions. We only have the following words in our
+# alphabet:
+
+# digits:
+# zero one two three four five six seven eight nine
+# other(animals):
+# cat dog bird
+# control commands
+# off/on, up/down, stop/go, yes/no, left, right
+# everything else is discarded
