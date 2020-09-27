@@ -8,6 +8,8 @@ import librosa.display
 import numpy as np
 import json
 
+print("!Done with imports")
+
 def one_hot_labels(labels: []):
     """
     Map string labels to one-hot vectors.
@@ -46,21 +48,37 @@ def train_model_digits_from_wav():
 
     # 10 digits
     assert data['mfcc'].shape[0] == 10 * preprocess.THRESHOLD
-    # we need the most informative features we can get, 40 is the maximum
-    # value for librosa.feature.mfcc
+    # we need the most informative features we can get, 40 is the
+    # maximum value for librosa.feature.mfcc
     assert data['mfcc'].shape[1] == 40
-    # the next dimension can vary, depending on how fine grained
-    # short FFT was.
+    # the next dimension can vary, depending on how fine-grained
+    # SFFT was.
 
     # Now train a simple model
-    inputs = keras.Input(shape = (data['mfcc'].shape[1],
-                                  data['mfcc'].shape[2]))
-    layer = keras.layers.Dense(32, activation = 'softmax') (inputs)
-    model = keras.Model(inputs = inputs, outputs = layer)
+    inputs = keras.layers.Input(shape =
+                                (data['mfcc'].shape[1],
+                                 data['mfcc'].shape[2]))
+    layer = keras.layers.Flatten()(inputs)
+
+    layer = keras.layers.Dense(32, activation = 'relu') (layer)
+    # REFACTOR
+    NUM_CLASSES = 10
+    layer = keras.layers.Dense(NUM_CLASSES, activation = 'softmax') (layer)
+
+    model = keras.Model(
+        inputs = inputs,
+        outputs = layer
+    )
+
+    model.compile(
+        loss = 'categorical_crossentropy'
+    )
     model.summary()
-    model.compile()
+
+    # REFACTOR
+    NUM_EPOCHS = 50
     model.fit(
-        data['mfcc'], category
+        data['mfcc'], category, epochs = NUM_EPOCHS
     )
 
 train_model_digits_from_wav()
