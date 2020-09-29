@@ -1,8 +1,3 @@
-## Papers
-[1] Speech Command Recognition with Convolutional Neural Network, Xuejiao Li & Zixuan Zhou
-
-## Solution
-
 This is a Python solution. It is divided into:
 
 - processing wav files to obtain a transcript of them

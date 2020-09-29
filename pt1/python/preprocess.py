@@ -3,10 +3,10 @@
 import librosa, librosa.display
 import matplotlib.pyplot as plt
 
-EXPLORE = False
+EXPLORE = True
 
 def mel_spectrogram(path: str):
-    # at the default sample rate = 22050 HZ
+    # At the default sample rate = 22050 HZ
     sound_wave, sr = librosa.load(path)
     return librosa.feature.mfcc(
         sound_wave,
@@ -14,7 +14,7 @@ def mel_spectrogram(path: str):
         n_mfcc = 40
     )
 
-# display a sample plot
+# Display a sample plot
 '''
 spectrogram = mel_spectrogram(
     './data/bed/00176480_nohash_0.wav'
@@ -26,6 +26,7 @@ librosa.display.specshow(
 plt.show()
 '''
 
+import subprocess
 import os
 import json
 import numpy as np
@@ -65,11 +66,6 @@ def prepare_data():
                     )
                 )
 
-                print(type(x))
-                print(type(x[0]))
-                print(type(x[0][0]))
-                # print(type(x[0][0][0]))
-
                 data['mfcc'].append(
                     mel_spectrogram(
                         "{}/{}".format(
@@ -78,21 +74,17 @@ def prepare_data():
                     ).tolist()
                 )
 
-                print("after converting to lists")
-
-                print(type(data))
-                print(type(data['mfcc']))
-                print(type(data['mfcc'][0]))
-                print(type(data['mfcc'][0][0]))
-                print(type(data['mfcc'][0][0][0]))
-
                 if EXPLORE == True:
-                    # play the sound
-                    os.system(
-                        "aplay {}/{}".format(
-                            path, file_name
+                    try:
+                        # Play the sound - only works with my Ubuntu
+                        subprocess.run([
+                            'aplay',
+                            '{}/{}'.format(path, file_name)
+                        ],
+                            check = True
                         )
-                    )
+                    except subprocess.CalledProcessError:
+                        print("Cannot play the sound on your machine")
                     librosa.display.specshow(
                         np.array(
                             data['mfcc'][-1]

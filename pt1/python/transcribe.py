@@ -50,13 +50,16 @@ def train_model_digits_from_wav():
     assert data['mfcc'].shape[0] == NUM_CLASSES * preprocess.THRESHOLD
     # 40 is the maximum value for librosa.feature.mfcc
     assert data['mfcc'].shape[1] == 40
-    # The other dimension can vary, depending on how fine-grained SFFT was.
+    # The other dimension can vary, depending on how fine-grained
+    # SFFT was.
 
     # --- Build a simple model
-    inputs = keras.layers.Input(shape = (data['mfcc'].shape[1], data['mfcc'].shape[2]))
+    inputs = keras.layers.Input(
+        shape = (data['mfcc'].shape[1], data['mfcc'].shape[2]))
     layer = keras.layers.Flatten()(inputs)
     layer = keras.layers.Dense(32, activation = 'relu') (layer)
-    layer = keras.layers.Dense(NUM_CLASSES, activation = 'softmax') (layer)
+    layer = keras.layers.Dense(
+        NUM_CLASSES, activation = 'softmax') (layer)
     model = keras.Model(inputs = inputs, outputs = layer)
 
     # --- Train a simple model
@@ -64,7 +67,9 @@ def train_model_digits_from_wav():
     model.summary()
     model.fit(data['mfcc'], category, epochs = NUM_EPOCHS)
 
-    # --- Check the model - todo use evaluation instead with train_test_split instead, also use validation/evaluation data instead of training data
+    # --- Check the model - todo use evaluation instead with
+    # train_test_split instead, also use validation/evaluation data
+    # instead of training data
     assert functools.reduce(
         lambda x, y: x + y,
         itertools.chain(
