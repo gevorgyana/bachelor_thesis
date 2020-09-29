@@ -27,6 +27,7 @@ def one_hot_labels(labels: []):
 def train_model_digits_from_wav():
     NUM_CLASSES = 10
     NUM_EPOCHS = 50
+    ERR_THRESHOLD = 0.01
     """
     Do multi-label classification
     """
@@ -79,6 +80,6 @@ def train_model_digits_from_wav():
                     data['mfcc']
                 ) - category
             )))
-    ) == 0
+    ) < ERR_THRESHOLD
 
 train_model_digits_from_wav()
