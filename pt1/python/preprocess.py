@@ -3,7 +3,7 @@
 import librosa, librosa.display
 import matplotlib.pyplot as plt
 
-EXPLORE = True
+EXPLORE = False #True
 
 def mel_spectrogram(path: str):
     # At the default sample rate = 22050 HZ
@@ -31,7 +31,7 @@ import os
 import json
 import numpy as np
 
-THRESHOLD = 1
+THRESHOLD = 4
 
 def prepare_data():
     data = {

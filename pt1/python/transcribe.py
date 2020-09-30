@@ -4,11 +4,15 @@ import preprocess
 
 import tensorflow.keras as keras
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
 import librosa.display
 import numpy as np
 import json
 import functools
 import itertools
+
+# debug
+import math
 
 def one_hot_labels(labels: []):
     """
@@ -27,7 +31,6 @@ def one_hot_labels(labels: []):
 def train_model_digits_from_wav():
     NUM_CLASSES = 10
     NUM_EPOCHS = 50
-    ERR_THRESHOLD = 0.01
     """
     Do multi-label classification
     """
@@ -44,7 +47,14 @@ def train_model_digits_from_wav():
     for i in data['category']:
         category.append(conversion[i])
     category = np.array(category)
-    print(category)
+    # print(category)
+    for i in data['mfcc']:
+        assert type([]) == type(i)
+        print("!{}".format(len(i)))
+        for j in i:
+            assert type([]) == type(j)
+            print("?{}".format(len(j)))
+
     data['mfcc'] = np.array(data['mfcc'], dtype = np.float32)
 
     # Dimensionality checks to find bugs
@@ -53,6 +63,12 @@ def train_model_digits_from_wav():
     assert data['mfcc'].shape[1] == 40
     # The other dimension can vary, depending on how fine-grained
     # SFFT was.
+
+    # FEATURE: There is no way to do cross-validation out of the box
+    # which is just sad :(, so hope that it works.
+    data_train, data_test, category_train, category_test = train_test_split (
+        data['mfcc'], category, test_size = 0.3
+    )
 
     # --- Build a simple model
     inputs = keras.layers.Input(
@@ -66,20 +82,12 @@ def train_model_digits_from_wav():
     # --- Train a simple model
     model.compile(loss = 'categorical_crossentropy')
     model.summary()
-    model.fit(data['mfcc'], category, epochs = NUM_EPOCHS)
+    learning_history = model.fit(data_train, category_train,
+              validation_data = (
+                  data_test, category_test
+              ),
+              epochs = NUM_EPOCHS)
 
-    # --- Check the model - todo use evaluation instead with
-    # train_test_split instead, also use validation/evaluation data
-    # instead of training data
-    assert functools.reduce(
-        lambda x, y: x + y,
-        itertools.chain(
-            *list(map(
-                lambda x: [0 if i < 0.5 else 1 for i in x],
-                model.predict(
-                    data['mfcc']
-                ) - category
-            )))
-    ) < ERR_THRESHOLD
+    return model
 
-train_model_digits_from_wav()
+trained_model = train_model_digits_from_wav()
