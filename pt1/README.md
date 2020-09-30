@@ -21,6 +21,12 @@ Control commands | off/on, up/down, stop/go, yes/no, left, right
 
 Everything else is discarded.
 
+### Convolutional network
+Motivation: table 9.1 in [2] is showing 2 options for processing
+audio data:
+- audio waveform
+- audio that has been processed with FT.
+
 ### Grammar
 
 ```
