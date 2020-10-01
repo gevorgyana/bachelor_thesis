@@ -3,7 +3,8 @@
 import librosa, librosa.display
 import matplotlib.pyplot as plt
 
-EXPLORE = False #True
+EXPLORE = False
+bad_input = 0
 
 def mel_spectrogram(path: str):
     # At the default sample rate = 22050 HZ
@@ -49,30 +50,27 @@ def prepare_data():
             # print('processing {}'.format(category))
             counter = 0
             for file_name in files:
-
                 if counter == THRESHOLD:
                     break
-
                 counter += 1
-
-                # print("processing {}".format(file_name))
-                data['id'].append(file_name)
-                data['category'].append(category)
-
-                print("before converting to list of lists")
                 x = mel_spectrogram(
                     "{}/{}".format(
                         path, file_name
                     )
                 )
+                mfcc = mel_spectrogram(
+                    "{}/{}".format(path, file_name)
+                ).tolist()
 
-                data['mfcc'].append(
-                    mel_spectrogram(
-                        "{}/{}".format(
-                            path, file_name
-                        )
-                    ).tolist()
-                )
+                # TODO Do better :facepalm:
+                if len(mfcc[0]) != 44:
+                    global bad_input
+                    bad_input += 1
+                    continue
+
+                data['mfcc'].append(mfcc)
+                data['id'].append(file_name)
+                data['category'].append(category)
 
                 if EXPLORE == True:
                     try:
@@ -96,6 +94,9 @@ def prepare_data():
 
     with open('data.json', 'w') as out:
         json.dump(data, out)
+
+    with open('.badinput', 'w') as out:
+        out.writelines(['{}'.format(bad_input)])
 
 if __name__ == "__main__":
     prepare_data()
