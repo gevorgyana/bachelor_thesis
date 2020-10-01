@@ -1,4 +1,5 @@
 data/
+tf_model/
 data.json
 __pycache__/
 .badinput

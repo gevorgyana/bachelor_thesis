@@ -11,6 +11,8 @@ import json
 import functools
 import itertools
 
+import pickle
+
 def one_hot_labels(labels: []):
     """
     Map string labels to one-hot vectors.
@@ -22,6 +24,12 @@ def one_hot_labels(labels: []):
         one_hot_i = [0 for i in range(sz)]
         one_hot_i[i] = 1
         output[val] = one_hot_i
+
+    with open('.pickle', 'wb') as pick:
+        pickle.dump(
+            output,
+            pick
+        )
 
     return output
 
@@ -54,7 +62,7 @@ def train_model_digits_from_wav():
     # No empty dataset
     assert NUM_CLASSES * preprocess.THRESHOLD - bad_input != 0
 
-    print("shape {}".format(data['mfcc'].shape))
+    print("!!!!! shape {}".format(data['mfcc'].shape))
 
     # 40 is the maximum value for librosa.feature.mfcc
     assert data['mfcc'].shape[1] == 40
@@ -82,6 +90,6 @@ def train_model_digits_from_wav():
               epochs = NUM_EPOCHS
     )
 
-    return model
+    model.save('tf_model')
 
-trained_model = train_model_digits_from_wav()
+train_model_digits_from_wav()
