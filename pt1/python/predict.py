@@ -35,6 +35,8 @@ def run():
         cnt += 1
 
     for ith, i in enumerate(res):
+        if i < 0.1:
+            continue
         print("{} : {}".format(rev_conv[ith], i))
 
 if __name__ == '__main__':

@@ -32,7 +32,7 @@ import os
 import json
 import numpy as np
 
-THRESHOLD = 4
+THRESHOLD = 40
 
 def prepare_data():
     data = {
@@ -47,7 +47,7 @@ def prepare_data():
                 'zero', 'one', 'two', 'three', 'four',
                 'five', 'six', 'seven', 'eight', 'nine',
         ]:
-            # print('processing {}'.format(category))
+            print('processing {}'.format(category))
             counter = 0
             for file_name in files:
                 if counter == THRESHOLD:
