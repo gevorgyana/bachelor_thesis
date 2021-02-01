@@ -14,3 +14,5 @@ existing blueprints (like voice pattern expansion)
 - [ ] Task #6 - online Judge project corss-over. Use the technology
 developed here to obtain solutions in vocal form from paricipants of
 an online competition.
+- [ ] New task #1. Use ffmpeg to recognize utternaces. Find if utternaces is something
+we absolutely need. Is it something like lexing in parsing techniques?
