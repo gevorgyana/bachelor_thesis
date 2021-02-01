@@ -16,3 +16,41 @@ developed here to obtain solutions in vocal form from paricipants of
 an online competition.
 - [ ] New task #1. Use ffmpeg to recognize utternaces. Find if utternaces is something
 we absolutely need. Is it something like lexing in parsing techniques?
+
+- [ ] LSP protocol?
+
+Another imprtant note.
+
+- TODO report about the changes.
+- There are some sysetems that do the same. Examples:
+Google web deverloper article on Web Speech Recognition API,
+https://www.voicecode.io/
+http://harmonia.cs.berkeley.edu/harmonia/index.html
+http://shorttalk-emacs.sourceforge.net/
+http://www.vocola.net/ old one
+https://talonvoice.com/docs/
+https://voicecomputer.com/compute-by-numbers-speech-interface/
+https://www.tobii.com/
+https://github.com/dwks/silvius
+https://kaldi-asr.org/doc/about.html
+https://github.com/dictation-toolbox/dragonfly
+https://github.com/dictation-toolbox/aenea
+
+One good article
+https://www.nature.com/articles/d41586-018-05588-x
+
+github collected some resources
+https://github.com/dictation-toolbox
+
+lol https://www.kickstarter.com/projects/1322999047/hushme-the-worlds-first-voice-mask-for-smartphones
+
+- Implement some functional patterns? Not just d-i-c-t-a-t-e, but use descriptive commands.
+
+HackerNews?
+Slack? subscribed to the following channels:
+- Talon
+- VoiceCode (VERY INTERESTING PROJECT)
+
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwivrNSPsMnuAhVraRUIHagbB6kQFjAAegQIBBAC&url=https%3A%2F%2Fdevelopers.google.com%2Fassistant%2Fsdk&usg=AOvVaw3TfAfSUh3GJxbBMYwtVPc8 Google's SDK???
+
+https://github.com/topics/voice-assistant tag
