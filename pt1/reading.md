@@ -4,3 +4,8 @@ reading arxiv entries by query:
 
 [ https://www.cs.cmu.edu/~jbigham/pubs/pdfs/2018/vocal-programming.pdf ]
 [ https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/speed-short-paper.pdf ]
+
+[ Good resources https://arxiv.org/abs/2003.01318 ]
+
+These guys say that https://patents.google.com/patent/US9911415B2/en 2 threads are
+required to implement voice assistant.
