@@ -54,3 +54,7 @@ Slack? subscribed to the following channels:
 https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwivrNSPsMnuAhVraRUIHagbB6kQFjAAegQIBBAC&url=https%3A%2F%2Fdevelopers.google.com%2Fassistant%2Fsdk&usg=AOvVaw3TfAfSUh3GJxbBMYwtVPc8 Google's SDK???
 
 https://github.com/topics/voice-assistant tag
+
+- feb 14:
+
+Learning in the Machine: Recirculation is Random Backpropagation P. Baldi and P. Sadowski August 11, 2018
