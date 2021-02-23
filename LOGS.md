@@ -56,3 +56,8 @@ we use encoder-decoder and ctc.
 - https://ieeexplore.ieee.org/document/1454428 along with the paper about Dragon
 
 - https://www.youtube.com/watch?v=RBgfLvAOrss&list=PLPXcFKg4niEmdw2N_ntdRN9rYxHt-kvMc&index=2 the video
+
+feb23:
+- http://www.voxforge.org/home/docs/faq/faq/what-is-an-acoustic-model explains what we would do w/o language models. it is really simple - nobody uses pure phonemes.
+- http://www.voxforge.org/home/docs/faq/faq/what-is-a-language-model
+- https://cmusphinx.github.io/wiki/tutorialconcepts/
