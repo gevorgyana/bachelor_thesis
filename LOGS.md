@@ -61,3 +61,8 @@ feb23:
 - http://www.voxforge.org/home/docs/faq/faq/what-is-an-acoustic-model explains what we would do w/o language models. it is really simple - nobody uses pure phonemes.
 - http://www.voxforge.org/home/docs/faq/faq/what-is-a-language-model
 - https://cmusphinx.github.io/wiki/tutorialconcepts/
+- https://distill.pub/2017/ctc/
+- https://web.stanford.edu/~jurafsky/goldwater10.pdf
+
+feb 24:
+- https://www.youtube.com/playlist?list=PLPXcFKg4niEmdw2N_ntdRN9rYxHt-kvMc watch this playlist and find papers from there
