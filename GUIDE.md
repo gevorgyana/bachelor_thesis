@@ -1,0 +1,3 @@
+- Compile a tool in LLVM source tree
+- Install Flashlight, download acoustic model and language model
+- Install emacs mode.el
