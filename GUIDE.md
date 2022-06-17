@@ -1,3 +1,3 @@
-- Compile a tool in LLVM source tree
+- Compile a tool in LLVM source tree -- use Amazon EC2 instance
 - Install Flashlight, download acoustic model and language model
 - Install emacs mode.el
